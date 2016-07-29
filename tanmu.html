@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>容器弹幕</title>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="myTanmu.js"></script>
+		<style type="text/css">
+			#screen {
+				position: absolute;
+				top: 100px;
+				left: 50%;
+				width: 600px;
+				height: 400px;
+				margin-left: -300px;
+				background-color: #ffffff;
+				border: 1px solid black;
+			}
+			
+			#reply {
+				position: absolute;
+				top: 510px;
+				left: 50%;
+				width: 600px;
+				height: 100px;
+				margin-left: -300px;
+			}
+			
+			.tanmu {
+				position: absolute;
+				top: 20px;
+				right: 100px;
+				height: 20px;
+				line-height: 20px;
+				border-radius: 20px;
+				padding: 2px 10px 2px 10px;
+				color: white;
+				background-color: rgba(0, 0, 0, 0.5);
+				font-family: "微软雅黑";
+				font-size: 12px;
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="screen">
+
+			<!--<span class="tanmu" style="top: 20px;right: 100px;">我是小弹幕</span>
+			<span class="tanmu" style="top: 50px;right: 120px;">我是小弹幕</span>
+			<span class="tanmu" style="top: 80px;right: 140px;">我是小弹幕</span>
+			<span class="tanmu" style="top: 110px;right: 160px;">我是小弹幕</span>-->
+		</div>
+		<div id="reply">
+			<input type="text" id="txt" />
+			<input type="button" id="btn" value="提交" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var options = {
+			//data: ['好看，精彩', '推荐，从来没看过这么酷的视频', '推荐么的视频', '推荐，这么酷的视频', '推荐，从来没看过这么酷的视频', '推荐么的视频', '推荐，这么酷的视频'],
+			data:[1,2,3,4,5,6,7],
+			//data:[1,2,3],
+			containerId: 'screen',
+			isLoop: true,
+			style: 'tanmu'
+		}
+		var tanmu = new myTanmu(options);
+		//tanmu.push('怎么没声音？！');
+		//tanmu.stop();
+		$(function() {
+			$('#btn').click(function() {
+				var words = $.trim($('#txt').val());
+				if (words) {
+					tanmu.push(words);
+				}
+			});
+		})
+	</script>
+
+</html>
