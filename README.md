@@ -1,2 +1,2 @@
-# tanmu
-a tanmu plugin
+[Tanmu](https://github.com/jnxyx/tanmu) — Tanmu Plugin
+==================================================
