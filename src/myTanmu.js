@@ -1,6 +1,8 @@
 ;
-(function(win, doc) {
+(function() {
 	"use strict";
+
+	var global = this;
 
 	//数据容器
 	var timeOut;
@@ -26,7 +28,7 @@
 	function tanmu(options) {
 		this.msgArray = options.data || [];
 		this.msgTarget = 0;
-		this.container = doc.getElementById(options.containerId);
+		this.container = global.defaultView.document.getElementById(options.containerId);
 		this.container.style.overflow = 'hidden';
 		this.isLoop = options.isLoop || false;
 		this.style = options.style;
@@ -134,7 +136,7 @@
 
 	proto.create = function(words) {
 		var top = topArray[getRandom()];
-		var element = doc.createElement('span');
+		var element = global.defaultView.document.createElement('span');
 		element.className += ' ' + this.style;
 		//element.classList.add(this.style);//not support on ie8
 		element.style.top = top;
@@ -187,5 +189,5 @@
 		return parseInt(str.replace('px', ''));
 	}
 
-	win.myTanmu = window.myTanmu || tanmu;
-})(window, document)
+	global.myTanmu = global.myTanmu || tanmu;
+}).call(this)
