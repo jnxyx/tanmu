@@ -69,14 +69,22 @@
 		var tanmu = new myTanmu(options);
 		//tanmu.push('怎么没声音？！');
 		//tanmu.stop();
-		$(function() {
-			$('#btn').click(function() {
-				var words = $.trim($('#txt').val());
+		// $(function() {
+		// 	$('#btn').click(function() {
+		// 		var words = $.trim($('#txt').val());
+		// 		if (words) {
+		// 			tanmu.push(words);
+		// 		}
+		// 	});
+		// })
+		window.onload = function(){
+			document.querySelector('#btn').onclick = function(){
+				var words = document.querySelector('#txt').value.replace(/(^[\s])|([\s]$)/gm, '');
 				if (words) {
 					tanmu.push(words);
 				}
-			});
-		})
+			}
+		};
 	</script>
 
 </html>
